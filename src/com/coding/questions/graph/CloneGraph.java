@@ -18,54 +18,48 @@ class UndirectedGraphNode {
 
 public class CloneGraph {
 	public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-	    if(node == null)
-	        return null;
-	 
-	    LinkedList<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
-	 
-	    HashMap<UndirectedGraphNode,UndirectedGraphNode> map = new HashMap<UndirectedGraphNode,UndirectedGraphNode>();
-	 
-	    queue.offer(node);
-	    while(!queue.isEmpty()){
-	        UndirectedGraphNode top = queue.poll();
-	        map.put(top, new UndirectedGraphNode(top.label));
-	 
-	        for(UndirectedGraphNode n: top.neighbors){
-	            if(!map.containsKey(n))
-	                queue.offer(n);
-	        }    
-	    }
-	 
-	    queue.offer(node);
-	    HashSet<UndirectedGraphNode> set = new HashSet<UndirectedGraphNode>();
-	    set.add(node);
-	 
-	    while(!queue.isEmpty()){
-	        UndirectedGraphNode top = queue.poll();
-	        for(UndirectedGraphNode n: top.neighbors){
-	            if(!set.contains(n)){
-	                queue.offer(n);
-	                set.add(n);
-	            }    
-	            map.get(top).neighbors.add(map.get(n));    
-	        }    
-	    }
-	 
-	    return map.get(node);
+		if (node == null)
+			return null;
+
+		LinkedList<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+		HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
+
+		UndirectedGraphNode newHead = new UndirectedGraphNode(node.label);
+
+		queue.add(node);
+		map.put(node, newHead);
+
+		while (!queue.isEmpty()) {
+			UndirectedGraphNode curr = queue.pop();
+			ArrayList<UndirectedGraphNode> currNeighbors = curr.neighbors;
+
+			for (UndirectedGraphNode aNeighbor : currNeighbors) {
+				if (!map.containsKey(aNeighbor)) {
+					UndirectedGraphNode copy = new UndirectedGraphNode(aNeighbor.label);
+					map.put(aNeighbor, copy);
+					map.get(curr).neighbors.add(copy);
+					queue.add(aNeighbor);
+				} else {
+					map.get(curr).neighbors.add(map.get(aNeighbor));
+				}
+			}
+
+		}
+		return newHead;
 	}
-	
+
 	public static void main(String[] args) {
 		UndirectedGraphNode ug0 = new UndirectedGraphNode(0);
 		UndirectedGraphNode ug1 = new UndirectedGraphNode(1);
 		UndirectedGraphNode ug2 = new UndirectedGraphNode(2);
-		ug0.neighbors= new ArrayList<UndirectedGraphNode>(Arrays.asList(ug1,ug2));
-		ug1.neighbors= new ArrayList<UndirectedGraphNode>(Arrays.asList(ug2));
-		ug2.neighbors= new ArrayList<UndirectedGraphNode>(Arrays.asList(ug2));
-		
+		ug0.neighbors = new ArrayList<UndirectedGraphNode>(Arrays.asList(ug1, ug2));
+		ug1.neighbors = new ArrayList<UndirectedGraphNode>(Arrays.asList(ug2));
+		ug2.neighbors = new ArrayList<UndirectedGraphNode>(Arrays.asList(ug2));
+
 		CloneGraph cg = new CloneGraph();
 		UndirectedGraphNode result = cg.cloneGraph(ug0);
 		for (UndirectedGraphNode string : result.neighbors) {
-			
+
 		}
 	}
 

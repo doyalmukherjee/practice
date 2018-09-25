@@ -1,5 +1,6 @@
 package com.coding.questions.array;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class LargestKTHElement {
@@ -53,7 +54,16 @@ public class LargestKTHElement {
 	}
 
 	public int findKthLargestHeap(int[] nums, int k) {
-	    PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
+		Comparator<Integer> inComp = new Comparator<Integer>() {
+			@Override
+			public int compare(Integer arg0, Integer arg1) {
+				return 0;
+			}
+		};
+		
+	    PriorityQueue<Integer> q = new PriorityQueue<Integer>(inComp);
+	    
+	    
 	    for(int i: nums){
 	        q.offer(i);
 	 

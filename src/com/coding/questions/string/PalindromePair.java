@@ -69,13 +69,13 @@ public class PalindromePair {
 
 	public static void main(String args[]) {
 		PalindromePair palindromePair = new PalindromePair();
-		String[] words = { "bat", "tab" };
+		/*String[] words = { "bat", "tab" };
 		List<List<Integer>> result = palindromePair.palindromePairs(words);
+		System.out.println(result);*/
+		String[] words1 = { "lls", "s", "sssll" };
+		List<List<Integer>> result = palindromePair.palindromePairs(words1);
 		System.out.println(result);
-		String[] words1 = { "abcd", "dcba", "lls", "s", "sssll" };
-		result = palindromePair.palindromePairs(words1);
-		System.out.println(result);
-		String[] words2 = { "", "abcd", "abba" };
+		/*String[] words2 = { "", "abcd", "abba" };
 		result = palindromePair.palindromePairs(words2);
 		System.out.println(result);
 		String[] words3 = { "a", "abc", "aba", "" };
@@ -83,6 +83,6 @@ public class PalindromePair {
 		System.out.println(result);
 		String[] words4 = { "abcd", "dcba", "lls", "s", "sssll" };
 		result = palindromePair.palindromePairs(words4);
-		System.out.println(result);
+		System.out.println(result);*/
 	}
 }

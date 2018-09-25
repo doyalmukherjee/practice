@@ -52,6 +52,6 @@ public class MeetingRoomConference {
 		Interval i2 = new Interval(5,10);
 		Interval i3 = new Interval(15,20);
 		
-		System.out.println(mc.minMeetingRooms(new Interval[] {i1,i2,i3}));
+		System.out.println(mc.minMeetingRooms(new Interval[] {i1,i3,i2}));
 	}
 }

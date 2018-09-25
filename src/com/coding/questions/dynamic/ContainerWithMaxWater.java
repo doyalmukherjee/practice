@@ -23,9 +23,9 @@ public class ContainerWithMaxWater {
 	
 	 public static void main(String[] args) {
 		
-		 int a[] = {1, 5, 4, 3};
-		 int b[] = {3, 1, 2, 4, 5};
-		 System.out.print(maxArea(a)+"\n" );
+		// int a[] = {1, 5, 4, 3};
+		 int b[] = {1,8,6,2,5,4,8,3,7};
+	//	 System.out.print(maxArea(a)+"\n" );
 		 System.out.print(maxArea(b) );
 	}
 }
